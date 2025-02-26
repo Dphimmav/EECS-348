@@ -1,0 +1,54 @@
+<!-- all code idea from chatGPT author edit some of them-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        p {
+            font-size: 20px;
+            padding: 10px;
+            border: 2px solid black;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p id="text">Dummy cat ready to change color and border!!!!</p>
+        <label for="colorInput"> RGB (e.g.128,0,128):</label>
+        <input type="text" id="colorInput" placeholder="e.g., 255,0,0">
+        
+        <label for="borderInput">Border Width (px):</label>
+        <input type="number" id="borderInput" min="1" max="10" value="1">
+
+        <button onclick="applyStyles()">Apply Changes</button>
+    </div>
+    
+    <script>
+        function applyStyles() {
+            let text = document.getElementById("text");
+            let colorInput = document.getElementById("colorInput").value;
+            let borderWidth = document.getElementById("borderInput").value;
+
+            if (/^\d{1,3},\d{1,3},\d{1,3}$/.test(colorInput)) {
+                text.style.color = `rgb(${colorInput})`;
+                text.style.borderColor = `rgb(${colorInput})`;
+            } else {
+                alert("Please enter valid RGB values!");
+            }
+
+            text.style.borderWidth = borderWidth + "px";
+        }
+    </script>
+</body>
+</html>
